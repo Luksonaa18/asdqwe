@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body
+    style="
+      background-image: url(istockphoto-1191251531-612x612.jpg);
+      background-size: cover;
+      backdrop-filter: blur(2px);
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1rem;
+      gap: 1rem;
+      height: 100vh;
+    "
+  >
+    <audio controls>
+      <source
+        src="Lady Gaga, Bruno Mars - Die With A Smile.mp3"
+        type="audio/mp3"
+      />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="text">
+      <p>
+        სიყვარულო, დღეს არა მხოლოდ შენი დაბადების დღეა, არამედ კიდევ ერთ
+        განსაკუთრებულ დღესასწაულს გვინათლავს: ვალენტინობას. ამ დღისადმი
+        მიძღვნილი ყველა სიტყვა ხომ ვერ გადმოსცემს იმ სიყვარულს, რომელიც შენთან
+        მქონია. შენ ჩემი ცხოვრების ყველაზე ნათელი, სუფთა და საამური ნაწილი ხარ.
+        შენი გვერდით ყველაფერი საოცარი ხდება, და სულაც არაა მნიშვნელოვანი რა
+        დღესასწაულია ყველაფერი გავს ზღვას, სადაც შენი სიყვარული არის ტალღები,
+        რომელიც ხვდება ჩემ გულს. გილოცავ დაბადების დღეს, ჩემი ვალენტინო, და
+        ასევე, გეტყვი, რომ ჩემს სამყაროში მხოლოდ შენ არსებობ ჩემი საუკეთესო
+        საჩუქარი! მინდა მთელი ცხოვრება ასე, ერთად გავატაროთ. მიყვარხარ და
+        ყოველთვის შენთან ვიქნები. სენც ქომ ბასო?
+      </p>
+      <div class="in">
+        <div class="fir">
+          <label for="ki">კიი</label>
+          <input style="" id="ki" type="checkbox" name="ki" />
+        </div>
+        <div class="fir1">
+          <label for="ara">ფუუ</label>
+          <input id="ki" type="checkbox" name="ara" />
+        </div>
+      </div>
+    </div>
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><img id="tek" src="tek.jpg" alt="asd" /></div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek1.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek2.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek3.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek4.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek5.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek6.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek7.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek8.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek9.jpg" alt="asd" />
+        </div>
+        <div class="swiper-slide">
+          <img id="tek" src="tek10.jpg" alt="asd" />
+        </div>
+      </div>
+    </div>
+    <a href="index3.html"><button id="pink">აქ ბასო</button></a>
+
+    <!-- Include Swiper's JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+      const swiper = new Swiper(".swiper", {
+        slidesPerView: 1, // Show one slide at a time
+        spaceBetween: 10, // Space between slides
+        loop: true, // Loop through the slides
+        autoplay: {
+          delay: 2000, // Auto slide every 3 seconds
+        },
+        pagination: false, // No pagination dots
+        navigation: false,
+        grabCursor: true,
+        touchEventsTarget: "container",
+      });
+    </script>
+  </body>
+</html>

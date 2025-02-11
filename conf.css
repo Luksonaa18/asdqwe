@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(istockphoto-1191251531-612x612.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 1rem;
+}
+h1 {
+  text-align: center;
+  color: red;
+  margin-left: 20px;
+}
+.text-catalog{
+    width: 100%;
+    background-color: white;
+    height: 500px;
+    overflow-y: auto;
+    border-radius: 12px;
+    border:1px solid #d32f2f; ;
+}

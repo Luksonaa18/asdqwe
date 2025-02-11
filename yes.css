@@ -96,3 +96,16 @@ body {
     text-align: center;
     color: #d32f2f;
   }
+  #mama{
+    border: none;
+    background-color: #d32f2f;
+    border-radius: 12px;
+    color: white;
+    width: 120%;
+    height: 25px;
+    transition: .6s ease-in-out;
+  }
+  #mama:hover{
+    background-color: white;
+    color:#d32f2f;
+  }

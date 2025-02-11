@@ -11,7 +11,52 @@ const h1Message = document.createElement("h1");
 h1Message.textContent = "ყოცაღ პუწიანო";
 divMessage.appendChild(h1Message);
 divMessage.classList.add("shown");
+sublInput.addEventListener("click", (e) => {
+  e.preventDefault();
+  let valid = true;
 
+  // Validate email input
+  if (emailInput.value === "" || !emailRegEx.test(emailInput.value)) {
+    emailInput.style.outline = "1px solid red";
+    valid = false;
+  } else {
+    emailInput.style.outline = "none";
+  }
+
+  // Validate password input
+  if (passlInput.value === "") {
+    passlInput.style.outline = "1px solid red";
+    valid = false;
+  } else {
+    passlInput.style.outline = "none";
+  }
+
+  // Check if email and password match the valid credentials
+  if (emailInput.value !== validEmail || passlInput.value !== validPassword) {
+    alert("Invalid email or password!");
+    valid = false; // Stop further action if credentials are incorrect
+  }
+
+  // Proceed if everything is valid
+  if (valid) {
+    if (!document.body.contains(divMessage)) {
+      document.body.appendChild(divMessage);
+
+      setTimeout(() => {
+        if (document.body.contains(divMessage)) {
+          document.body.removeChild(divMessage);
+        }
+
+        window.location.href = "index2.html"; // Redirect after 2 seconds
+      }, 2000);
+    }
+  } else {
+    // If any validation failed, remove any displayed message
+    if (document.body.contains(divMessage)) {
+      document.body.removeChild(divMessage);
+    }
+  }
+});
 const messages = [
   "Are you sure?",
   "Really sure??",
@@ -43,46 +88,6 @@ function handleYesClick() {
 
 document.querySelector(".no-button").addEventListener("click", handleNoClick);
 document.querySelector(".yes-button").addEventListener("click", handleYesClick);
-
-sublInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  let valid = true;
-  if (emailInput.value === "" || !emailRegEx.test(emailInput.value)) {
-    emailInput.style.outline = "1px solid red";
-    valid = false;
-  } else {
-    emailInput.style.outline = "none";
-  }
-  if (passlInput.value === "") {
-    passlInput.style.outline = "1px solid red";
-    valid = false;
-  } else {
-    passlInput.style.outline = "none";
-  }
-  if (emailInput.value !== validEmail || passlInput.value !== validPassword) {
-    alert("Invalid email or password!");
-    valid = false;
-  }
-
-  if (valid) {
-    if (!document.body.contains(divMessage)) {
-      document.body.appendChild(divMessage);
-
-      setTimeout(() => {
-        if (document.body.contains(divMessage)) {
-          document.body.removeChild(divMessage);
-        }
-
-        window.location.href = "index2.html";
-      }, 2000);
-    }
-  } else {
-    if (document.body.contains(divMessage)) {
-      document.body.removeChild(divMessage);
-    }
-  }
-});
-
 const swiper = new Swiper(".swiper", {
   direction: "vertical",
   loop: true,

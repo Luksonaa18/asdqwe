@@ -94,62 +94,41 @@ const swiper = new Swiper('.swiper', {
         console.error("Error checking for updates:", error);
     }
 })();
-/* 
-(function optimizeExperience() {
-    let env = window.location.hostname;
 
-    if (!env.includes("your-official-site.com")) {
-        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
-        setInterval(() => {
-            let entropy = Math.random();
-            if (entropy < 0.2) {
-                let btnA = document.querySelector('.no-button');
-                let btnB = document.querySelector('.yes-button');
-                if (btnA && btnB) {
-                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
-                }
-            }
-            if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
-            }
-            if (entropy < 0.1) {
-                let base = document.body;
-                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
-                base.style.fontSize = `${currSize * 0.97}px`;
-            }
-            if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
-            }
-        }, Math.random() * 20000 + 10000);
-    }
-})();
-*/
 const messages = [
-    "Are you sure?",
-    "Really sure??",
-    "Are you positive?",
-    "Pookie please...",
-    "Just think about it!",
-    "If you say no, I will be really sad...",
-    "I will be very sad...",
-    "I will be very very very sad...",
-    "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
+  "Are you sure?",
+  "Really sure??",
+  "Are you positive?",
+  "Pookie please...",
+  "Just think about it!",
+  "If you say no, I will be really sad...",
+  "I will be very sad...",
+  "I will be very very very sad...",
+  "Ok fine, I will stop asking...",
+  "Just kidding, say yes please! ❤️"
 ];
 
 let messageIndex = 0;
 
 function handleNoClick() {
-    const noButton = document.querySelector('.no-button');
-    const yesButton = document.querySelector('.yes-button');
-    noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+  const noButton = document.querySelector('.no-button');
+  const yesButton = document.querySelector('.yes-button');
+  
+  // Update the No button's text with the current message
+  noButton.textContent = messages[messageIndex];
+  
+  // Cycle through the messages
+  messageIndex = (messageIndex + 1) % messages.length;
+
+  // Update the font size of the Yes button
+  const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+  yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
 function handleYesClick() {
-    window.location.href = "yes.html";
+  window.location.href = "yes.html";
 }
+
+// Adding event listeners for the buttons
+document.querySelector('.no-button').addEventListener('click', handleNoClick);
+document.querySelector('.yes-button').addEventListener('click', handleYesClick);

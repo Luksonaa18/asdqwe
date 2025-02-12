@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Off Effect</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Center the container on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            gap: 10rem;
+            background-image: url(istockphoto-1191251531-612x612.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 1rem;
+        }
+
+        /* Scratch container to hold canvas and image */
+        .scratch-container {
+            position: relative;
+            width: 90vw;  /* 90% of the viewport width */
+            max-width: 600px; /* Maximum width of 600px */
+            height: 100vw;  /* 90% of the viewport height */
+            max-height: 600px; /* Maximum height of 600px */
+        }
+         h1{
+            color:rgb(248, 30, 103);
+         }
+        /* The canvas for the scratch-off effect */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 1; /* Ensure canvas is on top */
+            width: 100%; /* Make canvas fill container */
+            height: 300px;
+        }
+
+        /* Hidden image inside the container */
+        .hidden-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden; /* Initially hidden */
+        }
+
+        /* Ensure image fits container and maintains aspect ratio */
+        #abdi {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Add some basic responsiveness */
+        @media (max-width: 600px) {
+            .scratch-container {
+                width: 80vw;
+                height: 80vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ვინ არის ცემი უმამაზესიოოოოო?????</h1>
+    <div class="scratch-container">
+        <!-- Canvas for the scratchable gray layer -->
+        <canvas id="scratchCanvas" width="400" height="500"></canvas>
+        <!-- Hidden content (image) placed behind the canvas -->
+        <div id="hidden-content">
+            <img id="abdi" src="tek1.jpg" alt="Hidden Content" id="hiddenImage">
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('scratchCanvas');
+        const ctx = canvas.getContext('2d');
+        const hiddenContent = document.getElementById('hidden-content');
+        const image = document.getElementById('hiddenImage');
+        
+        let isScratching = false;
+
+        // Load and draw the image on the canvas (background image)
+        const img = new Image();
+        img.src = 'tek1.jpg'; // Replace with your actual image path
+        img.onload = function() {
+            // Draw the image on the canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // Overlay gray color to simulate the scratch-off layer
+            ctx.fillStyle = '#888';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        };
+
+        // Mouse events to start and stop the scratching (desktop)
+        canvas.addEventListener('mousedown', (e) => {
+            isScratching = true;
+            scratch(e);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isScratching = false;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isScratching) {
+                scratch(e);
+            }
+        });
+
+        // Touch events to support mobile (mobile devices)
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent scrolling
+            isScratching = true;
+            scratchTouch(e);
+        });
+
+        canvas.addEventListener('touchend', () => {
+            isScratching = false;
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (isScratching) {
+                scratchTouch(e);
+            }
+        });
+
+        // Function to erase the gray layer for mouse events (scratch effect)
+        function scratch(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Use the "destination-out" composite operation to erase the gray layer
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2); // Create a circle area for the scratch
+            ctx.fill();
+
+            // Check if enough area has been scratched
+            checkIfScratched();
+        }
+
+        // Function to erase the gray layer for touch events (scratch effect)
+        function scratchTouch(e) {
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0]; // Get the first touch point
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+
+            // Use the "destination-out" composite operation to erase the gray layer
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2); // Create a circle area for the scratch
+            ctx.fill();
+
+            // Check if enough area has been scratched
+            checkIfScratched();
+        }
+
+        // Function to check if enough of the gray layer is scratched off
+        function checkIfScratched() {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            let scratchedArea = 0;
+
+            // Count how many pixels are erased (white pixels)
+            for (let i = 0; i < data.length; i += 4) {
+                if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
+                    scratchedArea++;
+                }
+            }
+
+            // If more than 50% of the canvas is scratched, reveal the image
+            if (scratchedArea / (canvas.width * canvas.height) > 0.5) {
+                revealImage();
+            }
+        }
+
+        // Function to reveal the image when scratched
+        function revealImage() {
+            hiddenContent.style.visibility = "visible";
+        }
+    </script>
+</body>
+</html>

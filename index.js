@@ -33,7 +33,7 @@ sublInput.addEventListener("click", (e) => {
 
   // Check if email and password match the valid credentials
   if (emailInput.value !== validEmail || passlInput.value !== validPassword) {
-    alert("Invalid email or password!");
+    alert("ფუუ წერა არ იცი");
     valid = false; // Stop further action if credentials are incorrect
   }
 
@@ -85,7 +85,6 @@ function handleNoClick() {
 function handleYesClick() {
   window.location.href = "yes.html";
 }
-
 document.querySelector(".no-button").addEventListener("click", handleNoClick);
 document.querySelector(".yes-button").addEventListener("click", handleYesClick);
 const swiper = new Swiper(".swiper", {

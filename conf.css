@@ -12,6 +12,7 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   padding: 1rem;
+  gap: 1rem;
 }
 h1 {
   text-align: center;
@@ -26,3 +27,44 @@ h1 {
     border-radius: 12px;
     border:1px solid #d32f2f; ;
 }
+#submit {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff6f69;
+  transition: all 500ms;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #ff6f69;
+  
+}
+
+#submit:hover {
+  color: red;
+  transform: scale(1.05);
+  outline: 2px solid #ff6f69;
+  box-shadow: 2px 3px 10px -2px #ff6f69;
+}
+
+#submit::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ff6f69;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 500ms;
+  text-decoration: none;
+}
+
+#submit:hover::before {
+  width: 200%;
+}
+

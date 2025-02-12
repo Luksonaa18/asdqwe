@@ -20,7 +20,7 @@
             height: 100vh;
             background-color: #f4f4f4;
             margin: 0;
-            gap: 10rem;
+            gap: 3rem;
             background-image: url(istockphoto-1191251531-612x612.jpg);
             background-position: center;
             background-size: cover;
@@ -66,6 +66,46 @@
             height: 300px;
             object-fit: cover;
         }
+        #submit {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff6f69;
+  transition: all 500ms;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #ff6f69;
+  
+}
+
+#submit:hover {
+  color: red;
+  transform: scale(1.05);
+  outline: 2px solid #ff6f69;
+  box-shadow: 2px 3px 10px -2px #ff6f69;
+}
+
+#submit::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ff6f69;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 500ms;
+  text-decoration: none;
+}
+
+#submit:hover::before {
+  width: 200%;
+}
 
         /* Add some basic responsiveness */
         @media (max-width: 600px) {
@@ -77,7 +117,9 @@
     </style>
 </head>
 <body>
-    <h1>ვინ არის ცემი უმამაზესიოოოოო?????</h1>
+    <h1>ვინ არის ცემი უმამაზესიოოოოო?????
+        გაუსვი თითი
+    </h1>
     <div class="scratch-container">
         <!-- Canvas for the scratchable gray layer -->
         <canvas id="scratchCanvas" width="400" height="500"></canvas>
@@ -86,6 +128,7 @@
             <img id="abdi" src="tek1.jpg" alt="Hidden Content" id="hiddenImage">
         </div>
     </div>
+    <a href="index6.html" id="submit">ახლა კიდე აქ</a>
 
     <script>
         const canvas = document.getElementById('scratchCanvas');
